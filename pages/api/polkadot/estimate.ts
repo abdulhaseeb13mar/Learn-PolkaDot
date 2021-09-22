@@ -19,9 +19,9 @@ export default async function estimate(
     const transferAmount = '1000000000';
 
     // Transfer tokens
-    const transfer = undefined;
-    const info = undefined;
-    const fees = undefined;
+    const transfer = api.tx.balances.transfer(recipient, transferAmount);
+    const info = await transfer.paymentInfo(address);
+    const fees = info.partialFee.toNumber();
 
     res.status(200).json(fees);
   } catch (error) {
