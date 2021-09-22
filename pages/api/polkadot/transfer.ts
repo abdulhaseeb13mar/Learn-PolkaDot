@@ -24,7 +24,7 @@ export default async function transfer(
     const recipientAddr = recipient.address;
 
     // Transfer tokens
-    const transfer = undefined;
+    const transfer = await api.tx.balances.transfer(recipientAddr, txAmount);
     const hash = await transfer.signAndSend(account);
 
     res.status(200).json(hash.toString());
